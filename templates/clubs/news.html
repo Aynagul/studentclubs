@@ -1,0 +1,38 @@
+{% extends 'clubs/base.html' %}
+{% load static %}
+{% block title %}news{% endblock title %}
+{% block tr %}{% url 'news_tr' %}{% endblock tr %}
+{% block kg %}{% url 'news' %}{% endblock kg %}
+{% block content %}
+    <div class="services_main">
+        <div class="container" id="service_main">
+            <div class="creative_taital">
+                {% for item in all_description %}
+                    <h1 class="creative_text">{{ item.title }}</h1>
+                    <p style="color: #050000; text-align: center;">{{ item.description }}</p>
+                {% endfor %}
+                <div class="btn_main">
+                    <button type="button" class="btn btn-dark btn-lg"><a href="#sign_up_section">Катталуу</a></button>
+                </div>
+            </div>
+            <div class="section_service_2" id="section_service_2">
+                <h1 class="service_text">Кулактандыруулар</h1>
+            </div>
+            <div class="service_main">
+                <div class="container">
+                    <div class="row">
+                        {% for announcement in all_announcements %}
+                            <div class="col-md-6">
+                                <div class="written_text" style="overflow: scroll; height: 600px;">
+                                    <div class="like_icon"><img src="{% static 'clubs/img/writing-icon.png' %}"></div>
+                                    <h1 class="written_text">{{ announcement.title_announcement }}</h1>
+                                    <p>{{ announcement.announcement_description | safe }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
